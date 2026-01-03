@@ -1,17 +1,17 @@
 # tqc
 
-A command-line tool for downloading episodes from [Télé-Québec](https://video.telequebec.tv/).
+Un outil en ligne de commande pour télécharger des épisodes de [Télé-Québec](https://video.telequebec.tv/).
 
-## Features
+## Fonctionnalités
 
-- **List shows** - Browse seasons and episodes with metadata (duration, IDs)
-- **Flexible downloads** - Download a single episode, an entire season, or a complete show
-- **Progress tracking** - Shows current progress (e.g., `[5/52]`) when downloading multiple episodes
-- **Resilient** - Continues downloading remaining episodes if one fails, with a summary at the end
+- **Lister les émissions** - Parcourir les saisons et épisodes avec leurs métadonnées (durée, identifiants)
+- **Téléchargements flexibles** - Télécharger un seul épisode, une saison complète ou une émission au complet
+- **Suivi de la progression** - Affiche la progression (ex: `[5/52]`) lors du téléchargement de plusieurs épisodes
+- **Résilient** - Continue le téléchargement des épisodes restants si un échoue, avec un résumé à la fin
 
-## Requirements
+## Prérequis
 
-- [yt-dlp](https://github.com/yt-dlp/yt-dlp) must be installed and available in your PATH
+- [yt-dlp](https://github.com/yt-dlp/yt-dlp) doit être installé et accessible dans votre PATH
 
 ## Installation
 
@@ -19,30 +19,30 @@ A command-line tool for downloading episodes from [Télé-Québec](https://video
 cargo install --path .
 ```
 
-Or build manually:
+Ou compiler manuellement :
 
 ```bash
 cargo build --release
 ./target/release/tqc --help
 ```
 
-## Usage
+## Utilisation
 
-### Finding a show slug
+### Trouver le slug d'une émission
 
-Show slugs can be found in Télé-Québec URLs. For example, the show "Simon" at:
+Les slugs se trouvent dans les URLs de Télé-Québec. Par exemple, l'émission « Simon » à :
 ```
 https://video.telequebec.tv/tv-show/32951-simon
 ```
-has the slug `32951-simon`.
+a le slug `32951-simon`.
 
-### List all episodes
+### Lister tous les épisodes
 
 ```bash
 tqc list 32951-simon
 ```
 
-Output:
+Sortie :
 ```
 Show: Simon (ID: 32951)
 
@@ -52,37 +52,37 @@ Saison 1 (ID: 32952) (52 episodes):
   ...
 ```
 
-### Download a single episode
+### Télécharger un seul épisode
 
 ```bash
-tqc download 32951-simon 1 5    # Season 1, Episode 5
+tqc download 32951-simon 1 5    # Saison 1, Épisode 5
 ```
 
-### Download an entire season
+### Télécharger une saison complète
 
 ```bash
-tqc download 32951-simon 1      # All of Season 1
+tqc download 32951-simon 1      # Toute la saison 1
 ```
 
-### Download an entire show
+### Télécharger une émission au complet
 
 ```bash
-tqc download 32951-simon        # All seasons
+tqc download 32951-simon        # Toutes les saisons
 ```
 
-## Output format
+## Format des fichiers
 
-Downloaded files are named:
+Les fichiers téléchargés sont nommés ainsi :
 ```
-{Show} - S{season}E{episode} - {Title}.mp4
+{Émission} - S{saison}E{épisode} - {Titre}.mp4
 ```
 
-For example: `Simon - S01E01 - Super lapin.mp4`
+Par exemple : `Simon - S01E01 - Super lapin.mp4`
 
-## How it works
+## Fonctionnement
 
-tqc uses Télé-Québec's public Brightcove-based API to enumerate shows, seasons, and episodes. The actual video download is handled by yt-dlp, which supports the Télé-Québec/Brightcove player natively.
+tqc utilise l'API publique de Télé-Québec (basée sur Brightcove) pour énumérer les émissions, saisons et épisodes. Le téléchargement vidéo est effectué par yt-dlp, qui supporte nativement le lecteur Télé-Québec/Brightcove.
 
-## License
+## Licence
 
 MIT
