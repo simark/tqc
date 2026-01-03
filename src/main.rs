@@ -1,3 +1,6 @@
+// SPDX-License-Identifier: MIT
+// Copyright (c) 2025 Simon Marchi
+
 use clap::{Parser, Subcommand};
 use serde::Deserialize;
 use std::process::Command;
